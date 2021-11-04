@@ -1,3 +1,5 @@
+import pandas as pd
+
 class Item:
 
 	def __init__(self, name):
