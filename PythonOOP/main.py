@@ -1,3 +1,5 @@
+import csv
+
 class Item:
 	all_items = []
 	pay_rate = 0.8 # the pay rate after 20% discount
@@ -15,6 +17,29 @@ class Item:
 		# actions to execute
 		Item.all_items.append(self)
 
+	@classmethod
+	def instantiate_from_csv(cls):
+		with open('items.csv', 'r') as f:
+			reader = csv.DictReader(f)
+			items = list(reader)
+
+		for item in items:
+			Item(
+				name = item.get('name'),
+				price = float(item.get('price')),
+				quantity = int(item.get('quantity'))	
+			)
+	@staticmethod
+	def is_int(num):
+		# we are going to count out the decimals that are dot zero
+		# i.e: 10.0, 5.0,...
+		if isinstance(num, float):
+			return num.is_integer()
+		elif isinstance(num, int):
+			return True
+		else:
+			return False
+
 	def __repr__(self):
 		return f"Item('{self.name}', {self.price}, {self.quantity})"
 
@@ -25,10 +50,3 @@ class Item:
 		self.price = self.pay_rate * self.price
 		return self.price
 
-item1 = Item('Phone', 100, 1)
-item2 = Item('Laptop', 1000, 3)
-item3 = Item('Cable', 10, 5)
-item4 = Item('Mouse', 50, 5)
-item5 = Item('Keyboard', 75, 5)
-
-print(Item.all_items)
