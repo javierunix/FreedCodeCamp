@@ -13,9 +13,7 @@ my_image = ImageTk.PhotoImage(Image.open(image_path))
 my_label = tkinter.Label(image=my_image)
 my_label.pack()
 
-
 button_quit = tkinter.Button(root, text="Exit Program", command=root.quit)
 button_quit.pack()
-
 
 root.mainloop()

@@ -1,6 +1,5 @@
 import tkinter
 
-
 # In tkinter everything is a widget.
 # 1. Create is the root widget
 root = tkinter.Tk()
