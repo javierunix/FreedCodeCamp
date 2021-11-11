@@ -1,12 +1,12 @@
-from tkinter import *
+import tkinter
 
 
 # In tkinter everything is a widget.
 # 1. Create is the root widget
-root = Tk()
+root = tkinter.Tk()
 
 # 2. Create label widget.
-myLabel = Label(root, text="Hello, World!")
+myLabel = tkinter.Label(root, text="Hello, World!")
 
 # 3. Put the label into the root.
 myLabel.pack()

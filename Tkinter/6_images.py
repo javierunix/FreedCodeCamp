@@ -1,16 +1,20 @@
-from tkinter import *
-from PIL import ImageTk, Image # for managing usual images files (jpg, png,...)
+import tkinter
+from PIL import ImageTk, Image
 
-root = Tk()
+root = tkinter.Tk()
 root.title("Learn to Code at Codemy.com")
-root.iconbitmap('/Users/xabier/Documents/FreeCodeCamp/Tkinter/icons/trash_bin_recycle_bin_waste_dumpster_icon_191911.ico')
 
-my_image = ImageTk.PhotoImage(Image.open('/Users/xabier/Documents/FreeCodeCamp/Tkinter/images/dices.png'))
-my_label = Label(image=my_image)
+icon_path = '/Users/xabier/Documents/FreeCodeCamp/Tkinter/icons/icon2.ico'
+image_path = '/Users/xabier/Documents/FreeCodeCamp/Tkinter/images/dices.png'
+
+root.iconbitmap(icon_path)
+
+my_image = ImageTk.PhotoImage(Image.open(image_path))
+my_label = tkinter.Label(image=my_image)
 my_label.pack()
 
 
-button_quit = Button(root, text="Exit Program", command=root.quit)
+button_quit = tkinter.Button(root, text="Exit Program", command=root.quit)
 button_quit.pack()
 
 

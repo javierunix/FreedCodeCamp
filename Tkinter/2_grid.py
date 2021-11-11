@@ -1,13 +1,13 @@
-from tkinter import *
+import tkinter
 
 
 # In tkinter everything is a widget.
 # 1. Create is the root widget
-root = Tk()
+root = tkinter.Tk()
 
 # 2. Create label widget.
-myLabel1 = Label(root, text="Hello, World!")
-myLabel2 = Label(root, text="My Name is Xabier Guijarro")
+myLabel1 = tkinter.Label(root, text="Hello, World!")
+myLabel2 = tkinter.Label(root, text="My Name is Xabier Guijarro")
 
 # 3. Put the label into the root.
 myLabel1.grid(row=0, column=0)
