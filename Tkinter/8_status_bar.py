@@ -22,7 +22,7 @@ my_image_list = [my_image_1, my_image_2, my_image_3, my_image_4, my_image_5]
 image_index = 0  # index of the first image
 
 # status bar
-my_text = "Image %s of %s"  %(str(image_index + 1), str(len(my_image_list)))
+my_text = "Image %s of %s" % (str(image_index + 1), str(len(my_image_list)))
 status = Label(root, text=my_text, bd=1, relief=SUNKEN, anchor=E)
 # bd = border, E= east (rigth), w= west (left)
 
@@ -42,7 +42,8 @@ def forward():
     my_label = Label(image=my_image_list[image_index])
     my_label.grid(row=0, column=0, columnspan=3)
     # update the status bar
-    my_text = "Image %s of %s"  %(str(image_index + 1), str(len(my_image_list)))
+    my_text = "Image %s of %s" % (
+        str(image_index + 1), str(len(my_image_list)))
     status = Label(root, text=my_text, bd=1, relief=SUNKEN, anchor=E)
     status.grid(row=2, column=0, columnspan=3, sticky=W+E)
 
@@ -58,10 +59,10 @@ def back():
     my_label = Label(image=my_image_list[image_index])
     my_label.grid(row=0, column=0, columnspan=3)
     # update the status bar
-    my_text = "Image %s of %s"  %(str(image_index + 1), str(len(my_image_list)))
+    my_text = "Image %s of %s" % (
+        str(image_index + 1), str(len(my_image_list)))
     status = Label(root, text=my_text, bd=1, relief=SUNKEN, anchor=E)
     status.grid(row=2, column=0, columnspan=3, sticky=W+E)
-
 
 
 # create buttons
