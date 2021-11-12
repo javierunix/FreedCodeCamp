@@ -1,20 +1,30 @@
-from tkinter import Tk, Label, Button
+import os
 from PIL import ImageTk, Image
+from tkinter import Tk, Label, Button
+
+
+dirname = os.path.dirname(__file__)
+
 
 root = Tk()
 root.title("Learn to Code at Codemy.com")
 
-icon_path = '/Users/xabier/Documents/FreeCodeCamp/Tkinter/icons/icon2.ico'
-image_path = '/Users/xabier/Documents/FreeCodeCamp/Tkinter/img_gallery/'
+icon_path = os.path.join(dirname, 'icons/icon2.ico')
+
+image_path1 = os.path.join(dirname, 'img_gallery/img_1.jpg')
+image_path2 = os.path.join(dirname, 'img_gallery/img_2.jpg')
+image_path3 = os.path.join(dirname, 'img_gallery/img_3.jpg')
+image_path4 = os.path.join(dirname, 'img_gallery/img_4.jpg')
+image_path5 = os.path.join(dirname, 'img_gallery/img_5.jpg')
 
 
 root.iconbitmap(icon_path)
 
-my_image_1 = ImageTk.PhotoImage(Image.open(image_path + 'img_1.jpg'))
-my_image_2 = ImageTk.PhotoImage(Image.open(image_path + 'img_2.jpg'))
-my_image_3 = ImageTk.PhotoImage(Image.open(image_path + 'img_3.jpg'))
-my_image_4 = ImageTk.PhotoImage(Image.open(image_path + 'img_4.jpg'))
-my_image_5 = ImageTk.PhotoImage(Image.open(image_path + 'img_5.jpg'))
+my_image_1 = ImageTk.PhotoImage(Image.open(image_path1))
+my_image_2 = ImageTk.PhotoImage(Image.open(image_path2))
+my_image_3 = ImageTk.PhotoImage(Image.open(image_path3))
+my_image_4 = ImageTk.PhotoImage(Image.open(image_path4))
+my_image_5 = ImageTk.PhotoImage(Image.open(image_path5))
 
 my_image_list = [my_image_1, my_image_2, my_image_3, my_image_4, my_image_5]
 
