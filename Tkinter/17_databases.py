@@ -1,5 +1,4 @@
 from tkinter import *
-from PIL import ImageTk, Image
 import sqlite3
 
 
@@ -18,13 +17,13 @@ c = conn.cursor()
 # Create table
 
 # c.execute("""CREATE TABLE addresses (
-# 		first_name text,
-# 		last_name text,
-# 		address text,
-# 		city text,
-# 		state text,
-# 		zipcode integer
-# 		)""")
+#       first_name text,
+#       last_name text,
+#       address text,
+#       city text,
+#       state text,
+#       zipcode integer
+#       )""")
 
 # Create Update function to update a record
 
@@ -38,14 +37,14 @@ def update():
     record_id = delete_box.get()
 
     c.execute("""UPDATE addresses SET
-		first_name = :first,
-		last_name = :last,
-		address = :address,
-		city = :city,
-		state = :state,
-		zipcode = :zipcode 
+        first_name = :first,
+        last_name = :last,
+        address = :address,
+        city = :city,
+        state = :state,
+        zipcode = :zipcode
 
-		WHERE oid = :oid""",
+        WHERE oid = :oid""",
               {
                   'first': f_name_editor.get(),
                   'last': l_name_editor.get(),
