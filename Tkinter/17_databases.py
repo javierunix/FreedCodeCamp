@@ -72,7 +72,6 @@ def edit():
     global editor
     editor = Tk()
     editor.title('Update A Record')
-    editor.iconbitmap('c:/gui/codemy.ico')
     editor.geometry("400x300")
     # Create a database or connect to one
     conn = sqlite3.connect('address_book.db')
