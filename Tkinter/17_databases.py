@@ -22,7 +22,7 @@ this_cursor = conn.cursor()  # create a cursor
 #         last_name text,
 #         this_address text,
 #         city text,
-#         us_state text,
+#         us_state tex
 #         zipcode integer
 #         )
 #     ;
@@ -56,6 +56,18 @@ def submit():
     zipcode.delete(0, END)
 
 
+# create function to delete a record
+def delete():
+    conn = sqlite3.connect('address_book.db')  # create or connect a DB
+    this_cursor = conn.cursor()  # create a cursor
+
+    # delete record
+    this_cursor.execute("DELETE from addresses WHERE oid=" + delete_box.get())
+
+    conn.commit()  # commit changes to DB
+    conn.close()  # close connection to DB
+
+
 def query():
     conn = sqlite3.connect('address_book.db')  # create or connect a DB
     this_cursor = conn.cursor()  # create a cursor
@@ -63,14 +75,14 @@ def query():
     # query the database
     this_cursor.execute("SELECT *, oid FROM addresses;")
     records = this_cursor.fetchall()
-
-    print_records = ''
+    print_records = ""
 
     for record in records:
-        print_records += str(record) + "\n"
+        print_records += record[0] + " " + \
+            record[1] + "\t" + str(record[6]) + "\n"
 
     query_label = Label(root, text=print_records)
-    query_label.grid(row=8, column=0, columnspan=2)
+    query_label.grid(row=11, column=0, columnspan=2)
 
     conn.commit()  # commit changes to DB
     conn.close()  # close connection to DB
@@ -78,7 +90,7 @@ def query():
 
 # create text boxes
 first_name = Entry(root, width=30)
-first_name.grid(column=1, row=0, padx=20)
+first_name.grid(column=1, row=0, padx=20, pady=(10, 0))
 last_name = Entry(root, width=30)
 last_name.grid(column=1, row=1, padx=20)
 this_address = Entry(root, width=30)
@@ -89,10 +101,13 @@ us_state = Entry(root, width=30)
 us_state.grid(column=1, row=4, padx=20)
 zipcode = Entry(root, width=30)
 zipcode.grid(column=1, row=5, padx=20)
+delete_box = Entry(root, width=30)
+delete_box.grid(column=1, row=9, padx=20, pady=5)
+
 
 # create textbox labels
 first_name_label = Label(root, text="First Name")
-first_name_label.grid(column=0, row=0, padx=20)
+first_name_label.grid(column=0, row=0, padx=20, pady=(10, 0))
 last_name_label = Label(root, text="Last Name")
 last_name_label.grid(column=0, row=1, padx=20)
 this_address_label = Label(root, text="Address")
@@ -103,6 +118,9 @@ us_state_label = Label(root, text="State")
 us_state_label.grid(column=0, row=4, padx=20)
 zipcode_label = Label(root, text="Zip Code")
 zipcode_label.grid(column=0, row=5, padx=20)
+delete_box_label = Label(root, text="Delete ID")
+delete_box_label.grid(column=0, row=9, padx=20, pady=5)
+
 
 # create submit button
 submit_btn = Button(root, text="Add Record to DB", command=submit)
@@ -112,6 +130,9 @@ submit_btn.grid(column=0, row=6, columnspan=2, padx=10, pady=10, ipadx=100)
 query_btn = Button(root, text="Show Records", command=query)
 query_btn.grid(column=0, row=7, columnspan=2, padx=10, pady=10, ipadx=137)
 
+# create delete button
+delete_btn = Button(root, text="Delete Record", command=delete)
+delete_btn.grid(column=0, row=10, columnspan=2, padx=10, pady=10, ipadx=136)
 
 conn.commit()  # commit changes to DB
 conn.close()  # close connection to DB
