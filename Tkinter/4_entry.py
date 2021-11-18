@@ -15,7 +15,6 @@ def myClick():
     myLabel.pack()
 
 
-
 # buttons are also widgets
 # the function is called without parenthesis
 myButtom = tkinter.Button(root,
