@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Entry, Button
+from tkinter import Tk, Label, Entry, Button, W, E, N, S
 import requests
 import json
 
@@ -20,11 +20,10 @@ categoryColor = {
 
 
 def zipCodeLookUp():
-
     try:
         url = "https://www.airnowapi.org/aq/forecast/zipCode/" + \
             "?format=application/json&zipCode=" + zipCode.get() + \
-            "&date=2021-11-20&distance=25&" +\
+            "&date=2021-11-20&distance=25&" + \
             "API_KEY=D3C5E5E5-4893-4669-8819-58EBFFF1797D"
 
         apiRequests = requests.get(url)
@@ -44,10 +43,10 @@ def zipCodeLookUp():
 
 
 zipCode = Entry(root)
-zipCode.grid(row=0, column=0)
+zipCode.grid(row=0, column=0, sticky=W + E + N + S)
 
 zipCodeButton = Button(root, text="Lookup Zipcode", command=zipCodeLookUp)
-zipCodeButton.grid(row=0, column=1)
+zipCodeButton.grid(row=0, column=1, sticky=W + E + N + S)
 
 
 root.mainloop()
