@@ -1,14 +1,14 @@
-from tkinter import *
+from tkinter import Tk, Label, Entry, Button
 import requests
 import json
 
 root = Tk()
 root.title('Codemy.com - Learn to Code')
-root.geometry("600x32")
+root.geometry("600x100")
 
 
 # dictionary to associate quality with color
-category_color = {
+categoryColor = {
     "Good": "#00FF00",
     "Moderate": "#FFFF00",
     "Unhealthy for Sensitive Groups": "#FF7E00",
@@ -18,26 +18,36 @@ category_color = {
     "Unavailable": "#E1EBF4"
 }
 
-# create a requests variables
 
-api_url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=90001&date=2021-11-20&distance=25&API_KEY=D3C5E5E5-4893-4669-8819-58EBFFF1797D"
+def zipCodeLookUp():
+
+    try:
+        url = "https://www.airnowapi.org/aq/forecast/zipCode/" + \
+            "?format=application/json&zipCode=" + zipCode.get() + \
+            "&date=2021-11-20&distance=25&" +\
+            "API_KEY=D3C5E5E5-4893-4669-8819-58EBFFF1797D"
+
+        apiRequests = requests.get(url)
+        api = json.loads(apiRequests.content)
+        city = api[0]['ReportingArea']
+        quality = str(api[0]['AQI'])
+        category = api[0]['Category']['Name']
+        root.configure(background=categoryColor[category])
+
+        myLabel = Label(root, text=city + ": Quality " + quality
+                        + " (" + category + ")", font=("Helvetica", 20),
+                        background=categoryColor[category])
+        myLabel.grid(row=1, column=0, columnspan=2)
+
+    except Exception:
+        api = "Error..."
 
 
-try:
-    api_requests = requests.get(api_url)
-    api = json.loads(api_requests.content)
-    city = api[0]['ReportingArea']
-    quality = str(api[0]['AQI'])
-    category = api[0]['Category']['Name']
-    root.configure(background=category_color[category])
+zipCode = Entry(root)
+zipCode.grid(row=0, column=0)
 
-    my_label = Label(root, text=city + ": Quality " + quality
-                     + " (" + category + ")", font=("Helvetica", 20),
-                     background=category_color[category])
-    my_label.pack()
-
-except Exception as e:
-    api = "Error..."
+zipCodeButton = Button(root, text="Lookup Zipcode", command=zipCodeLookUp)
+zipCodeButton.grid(row=0, column=1)
 
 
 root.mainloop()
