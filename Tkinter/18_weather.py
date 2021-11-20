@@ -9,10 +9,10 @@ root.geometry("600x32")
 
 # dictionary to associate quality with color
 category_color = {
-    "Good": "green",
-    "Moderate": "yellow",
+    "Good": "#00FF00",
+    "Moderate": "#FFFF00",
     "Unhealthy for Sensitive Groups": "#FF7E00",
-    "Unhealthy": "red",
+    "Unhealthy": "#FA0000",
     "Very Unhealthy": "#8F3F97",
     "Hazardous": "#7E0023",
     "Unavailable": "#E1EBF4"
@@ -20,7 +20,7 @@ category_color = {
 
 # create a requests variables
 
-api_url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=93280&date=2021-11-20&distance=25&API_KEY=D3C5E5E5-4893-4669-8819-58EBFFF1797D"
+api_url = "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=90001&date=2021-11-20&distance=25&API_KEY=D3C5E5E5-4893-4669-8819-58EBFFF1797D"
 
 
 try:
