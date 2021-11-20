@@ -5,7 +5,6 @@ import json
 root = Tk()
 root.title('Codemy.com - Learn to Code')
 root.geometry("400x32")
-root.configure(background="green")
 
 
 # create a requests variables
